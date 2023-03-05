@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<title>Sentiment Analysis</title>
+</head>
+<body>
+	<ul>
+		<li><a class="active" href="/">Home</a></li>
+		<li><a href="/sentiment_analyser">Sentiment Analyiser</a></li>
+		<li><a href="/contact">Contact</a></li>
+		<li><a href="/about">About</a></li>
+	  </ul>
+	<h1 class="heading">Sentiment Analysis</h1>
+	<form action="{{ url_for('sentiment_analysis') }}" method="POST" class="form">
+		<label for="text">Enter text:</label><br>
+		<textarea name="text" rows="5" cols="50"></textarea><br>
+		<input type="submit" value="Submit">
+	</form>
+	           
+	<div>
+		{%if result=='positive' %}
+			<h3 class="postive">The sentiment is: {{ result }}</h3>
+		{% else %}
+			<h3 class="negative">The sentiment is: {{ result }}</h3>
+	{% endif %}
+	</div>
+</body>
+</html>

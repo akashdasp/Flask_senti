@@ -1,0 +1,73 @@
+body {
+    background-image: url("food.jpg") ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+  h1 {
+    color: rgb(234, 255, 0);
+  }
+  p {
+    color: red;
+  }
+.heading {
+    background-color: transparent;
+    text-align-last: center;
+    height: 50px;
+
+}
+.form {
+    text-align: center;
+    width: center;
+    padding: 20px;
+    background-color: transparent;
+    
+}
+.top_nav {
+    padding: 10px;
+    background-color: rgb(23, 22, 21);
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #f4f015;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ed0909af;
+}
+
+li a.active {
+  color: white;
+  background-color: #f20b96;
+}
+.postive {
+  color: #0bf239;
+  text-align-last: center;
+}
+.negative {
+  color: #f2540b;
+  text-align-last: center;
+}
+.about {
+  color:#f4f015
+}
+.about1 {
+  color: #0bf239;
+}

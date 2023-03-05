@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chart.js example</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+</head>
+<body>
+  <ul>
+		<li><a href="/">Home</a></li>
+		<li><a class="active" href="/sentiment_analyser">Sentiment Analyiser</a></li>
+		<li><a   href="/contact">Contact</a></li>
+		<li><a  href="/about">About</a></li>
+	  </ul>
+	<h1>Visitors per hour</h1>
+	<canvas id="bar-chart"></canvas>
+
+	<h1>Sentiment analysis</h1>
+	<canvas id="pie-chart"></canvas>
+  <style>
+    body {
+      background-color:gainsboro;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid #e7e7e7;
+      background-color: #f3f3f3;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: #f4e809;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+      background-color: #ddd;
+    }
+    
+    li a.active {
+      color: white;
+      background-color: #e91e1e;
+    }
+    </style>
+
+	<script>
+    		var ctx1 = document.getElementById('pie-chart').getContext('2d');
+		var chart1 = new Chart(ctx1, {
+			type: 'pie',
+			data: {
+				labels: {{ labels|tojson }},
+				datasets: [{
+					label: 'Sentiment',
+					data: {{ values|tojson }},
+					backgroundColor: [
+						'rgba(255, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(255, 99, 132, 1)'
+					],
+					borderColor: [
+						'rgba(255, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(255, 99, 132, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+        aspectRatio:2,
+				responsive: true,
+			}
+		});
+		var ctx2 = document.getElementById('bar-chart').getContext('2d');
+		var chart2 = new Chart(ctx2, {
+			type: 'bar',
+			data: {
+				labels: {{ hours|tojson }},
+				datasets: [{
+					label: 'Visitors',
+					data: {{ visitors|tojson }},
+					backgroundColor: 'rgba(255, 99, 132, 1)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true
+					}
+				}
+			}
+		});
+
+
+	</script>
+</body>
+</html>
